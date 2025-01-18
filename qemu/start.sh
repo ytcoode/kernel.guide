@@ -3,13 +3,6 @@
 # Change to the directory where the script resides
 cd "$(dirname "$0")"
 
-# kernel command line parameters
-kernel_cmdline="console=ttyS0 nokaslr $*"
-
-if [ "${QUICK}" != "1" ]; then
-    kernel_cmdline="root=/dev/vda rw ${kernel_cmdline}"
-fi
-
 # run qemu command
 qemu-system-x86_64 \
     -machine q35 \
@@ -35,7 +28,7 @@ qemu-system-x86_64 \
     -drive file=./uefi/OVMF_VARS.fd,if=pflash,format=raw \
     -drive file=./root.img,if=virtio,format=raw \
     -kernel ~/linux/arch/x86/boot/bzImage \
-    -append "${kernel_cmdline}" \
+    -append "root=/dev/vda rw console=ttyS0 $*" \
     -nographic \
     # -s \
     # -S \
