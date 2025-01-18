@@ -14,7 +14,7 @@ fi
 qemu-system-x86_64 \
     -machine q35 \
     -cpu host \
-    -accel kvm \
+    -accel kvm,kernel-irqchip=split \
     -smp cpus=3,maxcpus=4,sockets=2,cores=2 \
     -m 3G,slots=1,maxmem=4G \
     -object memory-backend-ram,size=1G,id=m0 \
@@ -29,6 +29,7 @@ qemu-system-x86_64 \
     -numa cpu,socket-id=0,core-id=1,node-id=1 \
     -numa cpu,socket-id=1,core-id=0,node-id=2 \
     -numa cpu,socket-id=1,core-id=1,node-id=3 \
+    -device intel-iommu,intremap=on \
     -virtfs local,path=./mnt,mount_tag=mnt,security_model=none \
     -drive file=./uefi/OVMF_CODE.fd,if=pflash,format=raw,readonly=on \
     -drive file=./uefi/OVMF_VARS.fd,if=pflash,format=raw \
