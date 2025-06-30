@@ -23,6 +23,9 @@ qemu-system-x86_64 \
     -numa cpu,socket-id=1,core-id=0,node-id=2 \
     -numa cpu,socket-id=1,core-id=1,node-id=3 \
     -device intel-iommu,intremap=on \
+    -device pcie-root-port,id=rp1 \
+    -device nvme,serial=deadbeef,bus=rp1,drive=nvme0 \
+    -drive file=./nvme.img,if=none,format=raw,id=nvme0 \
     -virtfs local,path=./mnt,mount_tag=mnt,security_model=none \
     -drive file=./uefi/OVMF_CODE.fd,if=pflash,format=raw,readonly=on \
     -drive file=./uefi/OVMF_VARS.fd,if=pflash,format=raw \
