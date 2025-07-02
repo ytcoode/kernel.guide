@@ -53,7 +53,7 @@ options=(
 
     # kernel
     -kernel ~/linux/arch/x86/boot/bzImage
-    -append "root=/dev/vda rw console=ttyS0 $*"
+    -append "root=/dev/vda rw console=ttyS0 debug $*"
 
     # misc
     -nographic
