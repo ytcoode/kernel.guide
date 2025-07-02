@@ -26,10 +26,11 @@ qemu-system-x86_64 \
     -device pcie-root-port,id=rp1 \
     -device nvme,bus=rp1,serial=deadbeef,drive=nvme0 \
     -blockdev driver=file,filename=./nvme.img,node-name=nvme0 \
+    -blockdev driver=file,filename=./root.img,node-name=vda \
+    -device virtio-blk-pci,drive=vda \
     -virtfs local,path=./mnt,mount_tag=mnt,security_model=none \
     -drive file=./uefi/OVMF_CODE.fd,if=pflash,format=raw,readonly=on \
     -drive file=./uefi/OVMF_VARS.fd,if=pflash,format=raw \
-    -drive file=./root.img,if=virtio,format=raw \
     -kernel ~/linux/arch/x86/boot/bzImage \
     -append "root=/dev/vda rw console=ttyS0 $*" \
     -nographic \
