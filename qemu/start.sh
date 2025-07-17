@@ -37,11 +37,11 @@ options=(
     -device pcie-root-port,id=rp1
 
     # nvme
-    -blockdev driver=file,filename=./nvme.img,node-name=nvme0
+    -blockdev driver=file,filename=./img/ext4.img,node-name=nvme0
     -device nvme,bus=rp1,serial=deadbeef,drive=nvme0
 
     # vda
-    -blockdev driver=file,filename=./root.img,node-name=vda
+    -blockdev driver=file,filename=./img/root.bcachefs.img,node-name=vda
     -device virtio-blk-pci,drive=vda
 
     # share files between host and guest
