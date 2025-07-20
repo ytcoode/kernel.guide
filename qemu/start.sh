@@ -37,15 +37,16 @@ options=(
     -device pcie-root-port,id=rp1
 
     # nvme
-    -blockdev driver=file,filename=./img/ext4.img,node-name=nvme0
-    -device nvme,bus=rp1,serial=deadbeef,drive=nvme0
+    -device nvme,serial=deadbeef,bus=rp1,drive=nvme0n1
+    -blockdev driver=file,filename=./img/ext4.img,node-name=nvme0n1
 
     # vda
-    -blockdev driver=file,filename=./img/root.bcachefs.img,node-name=vda
     -device virtio-blk-pci,drive=vda
+    -blockdev driver=file,filename=./img/root.bcachefs.img,node-name=vda
 
     # share files between host and guest
-    -virtfs local,path=./mnt,mount_tag=mnt,security_model=none
+    -device virtio-9p-pci,fsdev=fsdev1,mount_tag=shared
+    -fsdev local,path=./shared,security_model=none,id=fsdev1
 
     # uefi
     -drive file=./uefi/OVMF_CODE.fd,if=pflash,format=raw,readonly=on
