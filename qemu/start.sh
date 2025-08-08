@@ -45,8 +45,11 @@ options=(
     -blockdev driver=file,filename=./img/root.bcachefs.img,node-name=vda
 
     # share files between host and guest
-    -device virtio-9p-pci,fsdev=fsdev1,mount_tag=shared
-    -fsdev local,path=./shared,security_model=none,id=fsdev1
+    -device virtio-9p-pci,fsdev=fsdev1,mount_tag=/mnt
+    -fsdev local,path=./shared/mnt,security_model=none,id=fsdev1
+
+    -device virtio-9p-pci,fsdev=fsdev2,mount_tag=/lib/modules
+    -fsdev local,path=./shared/lib/modules,security_model=none,id=fsdev2
 
     # uefi
     -drive file=./uefi/OVMF_CODE.fd,if=pflash,format=raw,readonly=on
