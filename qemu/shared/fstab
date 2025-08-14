@@ -2,5 +2,5 @@
 # See fstab(5) for details.
 
 # <file system> <dir> <type> <options> <dump> <pass>
-/mnt /mnt 9p trans=virtio 0 2
 /lib/modules /lib/modules 9p trans=virtio 0 2
+/root/shared /root/shared 9p trans=virtio 0 2
