@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mkdir /proc
+mount -t proc none /proc
+
+mkdir /sys
+mount -t sysfs none /sys
+
+mkdir /dev
+mount -t devtmpfs devtmpfs /dev
+
+mkdir /dev/pts
+mount -t devpts devpts /dev/pts
+
+echo "Booted into BusyBox rootfs"
+exec /bin/sh
