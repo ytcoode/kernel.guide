@@ -1,15 +1,15 @@
 #!/bin/sh
 
-mkdir /proc
-mount -t proc none /proc
+mkdir -p /proc
+mount -t proc proc /proc
 
-mkdir /sys
-mount -t sysfs none /sys
+mkdir -p /sys
+mount -t sysfs sysfs /sys
 
-mkdir /dev
+mkdir -p /dev
 mount -t devtmpfs devtmpfs /dev
 
-mkdir /dev/pts
+mkdir -p /dev/pts
 mount -t devpts devpts /dev/pts
 
 echo "Booted into BusyBox rootfs"
