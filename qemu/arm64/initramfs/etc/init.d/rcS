@@ -11,6 +11,3 @@ mount -t devtmpfs devtmpfs /dev
 
 mkdir -p /dev/pts
 mount -t devpts devpts /dev/pts
-
-echo "Booted into BusyBox rootfs"
-exec /bin/sh
