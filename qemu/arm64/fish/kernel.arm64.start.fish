@@ -9,7 +9,7 @@ function kernel.arm64.start
         -device xio3130-downstream,id=dp1,slot=3,bus=up0 \
         -device nvme,serial=deadbeef,drive=nvme0n1,bus=dp0 \
         -blockdev driver=file,filename=$HOME/qemu/img/ext4.img,node-name=nvme0n1 \
-        -virtfs local,path=$HOME/qemu/arm64/shared,mount_tag=shared,security_model=none \
+        -virtfs local,path=$HOME/qemu/mnt,mount_tag=mnt,security_model=none \
         -kernel ~/linux/arch/arm64/boot/Image \
         -initrd ~/qemu/arm64/initramfs.cpio \
         -append "rdinit=/bin/init console=ttyAMA0 debug" \

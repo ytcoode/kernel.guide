@@ -12,5 +12,5 @@ mount -t devtmpfs devtmpfs /dev
 mkdir -p /dev/pts
 mount -t devpts devpts /dev/pts
 
-mkdir -p /mnt/shared
-mount -t 9p -o trans=virtio shared /mnt/shared
+mkdir -p /mnt
+mount -t 9p -o trans=virtio mnt /mnt
