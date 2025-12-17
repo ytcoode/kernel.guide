@@ -1,3 +1,2 @@
 ::sysinit:/etc/init.d/rcS
 ::respawn:-/bin/sh
-a
