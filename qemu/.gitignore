@@ -1,0 +1,5 @@
+*
+!*/
+!.gitignore
+!arm/64/initramfs/etc/**
+!x86/64/**
