@@ -17,3 +17,6 @@ mount -t devpts devpts /dev/pts
 
 mkdir -p /mnt
 mount -t 9p -o trans=virtio mnt /mnt
+
+mkdir -p /lib
+mount -t 9p -o trans=virtio lib /lib
