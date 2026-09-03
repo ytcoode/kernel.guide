@@ -2,4 +2,5 @@
 !*/
 !.gitignore
 !arm/64/initramfs/etc/**
+!arm/64/shared/tmp/*.dts
 !x86/64/**
